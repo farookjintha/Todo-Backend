@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 databaseConfiguration();
 
 //adding cors
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors());
 
 //add the middlewares
 app.use(express.json({ extended: false }));
