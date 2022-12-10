@@ -5,6 +5,7 @@ const cors = require("cors");
 const databaseConfiguration = require('./configurations/database.js');
 
 const todo = require("./routers/todo.routes.js");
+const authRoutes = require('./routers/auth.routes');
 
 const dotenv = require("dotenv");
 
@@ -24,8 +25,10 @@ app.use(cors());
 app.use(express.json({ extended: false }));
 app.get('/', (req, res) => res.send('<h1>Server is up and running!!</h1>'))
 
+app.use("/api", authRoutes);
 //using the todo routes
 app.use("/api/todoapp", todo);
+
 
 // listen
 app.listen(PORT, () =>
