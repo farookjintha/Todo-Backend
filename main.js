@@ -8,6 +8,7 @@ const todo = require("./routers/todo.routes.js");
 const authRoutes = require('./routers/auth.routes');
 
 const dotenv = require("dotenv");
+const { requireSignIn, isAuth } = require("./utils/authentication.js");
 
 dotenv.config();
 
@@ -27,7 +28,7 @@ app.get('/', (req, res) => res.send('<h1>Server is up and running!!</h1>'))
 
 app.use("/api", authRoutes);
 //using the todo routes
-app.use("/api/todoapp", todo);
+app.use("/api/:userID/todoapp", requireSignIn,isAuth,todo);
 
 
 // listen

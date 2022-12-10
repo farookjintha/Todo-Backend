@@ -8,10 +8,11 @@ const {
   updateOneTodo,
   deleteTodo,
 } = require("../controllers/controllers.js");
+const { requireSignIn, isAuth } = require("../utils/authentication.js");
 
 router.get("/", listAllTodo);
 
-router.post("/", createOneTodo);
+router.post("/",createOneTodo);
 
 router.put("/:id", updateOneTodo);
 
